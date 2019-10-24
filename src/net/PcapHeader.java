@@ -1,4 +1,5 @@
 package net;
 
-public class PcapHeader {
+public class PcapHeader implements  PcapHProperties{
+
 }

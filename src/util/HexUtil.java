@@ -29,11 +29,21 @@ public class HexUtil {
         return(sw.toString());
     }
 
-    public static int extractInteger(byte[] bytes, int pos, int cnt) {
+    public static int extractInteger(byte[] bytes, int pos, int cnt, boolean endian) {
         int value = 0;
-        for(int i=0; i<cnt; i++)
-            value |= ((bytes[pos + cnt - i - 1] & 0xff) << 8 * i);
+
+        if(!endian) {
+            for(int i=0; i<cnt; i++)
+                value |= ((bytes[pos + cnt - i - 1] & 0xff) << 8 * i);
+        } else {
+            for(int i=cnt; i > 0; i--)
+                value |= ((bytes[pos + cnt - i - 1] & 0xff) << 8 * (i+1)%cnt);
+        }
 
         return value;
+    }
+
+    public static int hexToDec(String s) {
+        return Integer.parseInt(s,16);
     }
 }
