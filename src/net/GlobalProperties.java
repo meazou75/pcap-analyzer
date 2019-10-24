@@ -1,0 +1,19 @@
+package net;
+
+public interface GlobalProperties {
+    int GLB_MAGIC_LEN = 4;
+    int GLB_MAJORV_LEN = 2;
+    int GLB_MINORV_LEN = 2;
+    int GLB_ZONE_LEN = 4;
+    int GLB_SIGFIGS_LEN = 4;
+    int GLB_SNAPLEN_LEN = 4;
+    int GLB_NETWORK_LEN = 4;
+
+    int GLB_MAGIC_POS = 0;
+    int GLB_MAJORV_POS = GLB_MAGIC_POS + GLB_MAJORV_LEN;
+    int GLB_MINORV_POS = GLB_MAJORV_POS + GLB_MINORV_LEN;
+    int GLB_ZONE_POS = GLB_MINORV_POS + GLB_ZONE_LEN;
+    int GLB_SIGFIGS_POS = GLB_ZONE_POS + GLB_SIGFIGS_LEN;
+    int GLB_SNAPLEN_POS = GLB_SIGFIGS_POS + GLB_SNAPLEN_LEN;
+    int GLB_NETWORK_POS = GLB_SNAPLEN_POS + GLB_NETWORK_LEN;
+}
