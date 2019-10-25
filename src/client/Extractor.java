@@ -14,7 +14,7 @@ import java.util.stream.IntStream;
 
 public class Extractor {
     public static void main(String[] args) throws IOException {
-        byte[] buffer = FileUtil.extractDataFromFile("/home/user/Bureau/pcap-analyzer/ressources/ARP.pcap");
+        byte[] buffer = FileUtil.extractDataFromFile("/home/user/Bureau/pcap-analyzer/ressources/ICMP.pcap");
 
         GlobalHeader globalHeader = new GlobalHeader(Arrays.copyOfRange(buffer, 0, GlobalHeader.GLB_SIZE));
 
@@ -45,6 +45,7 @@ public class Extractor {
 
         for (Packet packet : packets) {
             System.out.println(packet.toString());
+            System.out.println("-----------------------------------------------------------------------------");
         }
     }
 }

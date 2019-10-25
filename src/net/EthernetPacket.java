@@ -48,7 +48,7 @@ public class EthernetPacket extends Packet implements EthernetProperties {
         stringBuilder.append("-----------------------------------------------------------------------------\n");
         stringBuilder.append("Destination Mac Address     : ").append(getDestinationMacAddress()).append("\n");
         stringBuilder.append("Source Mac Address          : ").append(getSourceMacAddress()).append("\n");
-        stringBuilder.append("Ethernet Type               : ").append(HexUtil.toString(this.getRawEthernetType())).append(" - ").append(getEthernetType()).append("\n");
+        stringBuilder.append("Ethernet Type               : ").append(HexUtil.toString(this.getRawEthernetType())).append(" - ").append(getEthernetType());
         return stringBuilder.toString();
     }
 }
