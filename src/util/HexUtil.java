@@ -1,6 +1,7 @@
 package util;
 
 import java.io.StringWriter;
+import java.util.Arrays;
 
 public class HexUtil {
     public static char nibbleToDigit(byte x) {
@@ -30,20 +31,25 @@ public class HexUtil {
     }
 
     public static int extractInteger(byte[] bytes, int pos, int cnt, boolean endian) {
-        int value = 0;
+        return bytesToDec(Arrays.copyOfRange(bytes, pos, pos+cnt), endian);
+    }
 
+    public static String bytesToHex(byte[] bytes, boolean endian) {
+        StringBuilder s = new StringBuilder();
         if(!endian) {
-            for(int i=0; i<cnt; i++)
-                value |= ((bytes[pos + cnt - i - 1] & 0xff) << 8 * i);
+            for (byte aByte : bytes) {
+                s.append(String.format("%02X", aByte));
+            }
         } else {
-            for(int i=cnt; i > 0; i--)
-                value |= ((bytes[pos + cnt - i - 1] & 0xff) << 8 * (i+1)%cnt);
+            for (int i=bytes.length-1;i>-1;i--) {
+                s.append(String.format("%02X", bytes[i]));
+            }
         }
-
-        return value;
+        return s.toString();
     }
 
-    public static int hexToDec(String s) {
-        return Integer.parseInt(s,16);
+    public static int bytesToDec(byte[] bytes, boolean endian) {
+        return Integer.parseInt(bytesToHex(bytes, endian),16);
     }
+
 }

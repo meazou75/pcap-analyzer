@@ -1,7 +1,9 @@
 package client;
 
 import net.GlobalHeader;
+import net.Packet;
 import net.PcapHeader;
+import service.PacketFactory;
 import util.FileUtil;
 import util.HexUtil;
 
@@ -12,7 +14,7 @@ import java.util.stream.IntStream;
 
 public class Extractor {
     public static void main(String[] args) throws IOException {
-        byte[] buffer = FileUtil.extractDataFromFile("C:\\Users\\fdelville\\Desktop\\MSSIS-Projects\\pcap-analyzer\\ressources\\ftp.pcap");
+        byte[] buffer = FileUtil.extractDataFromFile("/home/user/Bureau/pcap-analyzer/ressources/ARP.pcap");
 
         GlobalHeader globalHeader = new GlobalHeader(Arrays.copyOfRange(buffer, 0, GlobalHeader.GLB_SIZE));
 
@@ -35,8 +37,14 @@ public class Extractor {
             size = HexUtil.extractInteger(buffer, PcapHeader.PH_TOTALPACKETLENGHT_POS, PcapHeader.PH_TOTALPACKETLENGHT_LEN, true);
         }
 
+        ArrayList<Packet> packets = new ArrayList<>();
+
         for (byte[] raw_packet : raw_buffer_sequenced) {
-            System.out.println(HexUtil.toString(raw_packet));
+            packets.add(PacketFactory.constructPacket(raw_packet));
+        }
+
+        for (Packet packet : packets) {
+            System.out.println(packet.toString());
         }
     }
 }
