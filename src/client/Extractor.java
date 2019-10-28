@@ -14,7 +14,7 @@ import java.util.stream.IntStream;
 
 public class Extractor {
     public static void main(String[] args) throws IOException {
-        byte[] buffer = FileUtil.extractDataFromFile("/home/user/Bureau/pcap-analyzer/ressources/ICMP.pcap");
+        byte[] buffer = FileUtil.extractDataFromFile("C:\\Users\\fdelville\\Desktop\\MSSIS-Projects\\pcap-analyzer\\ressources\\ICMP.pcap");
 
         GlobalHeader globalHeader = new GlobalHeader(Arrays.copyOfRange(buffer, 0, GlobalHeader.GLB_SIZE));
 

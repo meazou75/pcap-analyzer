@@ -20,9 +20,20 @@ public class PacketFactory {
                 return new ArpPacket(rawPacket);
             case 0x0800:
                 IpPacket ipHeader = new IpPacket(ArrayUtil.sliceBytes(rawPacket, 0, IpProperties.IP_HEADER_LEN));
-                return ipHeader;
+                // Remove IpHeader from raw data
+                rawPacket = ArrayUtil.sliceBytes(rawPacket, IpProperties.IP_HEADER_LEN, rawPacket.length);
+                switch (ipHeader.getProtocol()) {
+                    case 0x01 :
+                        return new IcmpPacket(ArrayUtil.sliceBytes(rawPacket, 0, 10));
+                    case 0x06 :
+                        return ipHeader;
+                    case 0x11:
+                        return ipHeader;
+                    default :
+                        return ipHeader;
+                }
             default:
-                return null;
+                return ethernetHeader;
         }
     }
 }
