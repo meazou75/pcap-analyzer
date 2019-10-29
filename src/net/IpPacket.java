@@ -11,7 +11,7 @@ public class IpPacket extends EthernetPacket implements IpProperties {
 
     public IpPacket(byte[] data) {
         super(data);
-        this.data = data;
+        this.data = ArrayUtil.sliceBytes(data, EthernetPacket.ETH_HEADER_LEN, IpProperties.IP_HEADER_LEN);
     }
 
     public byte[] getRawVersionAndHeaderLength() {
@@ -122,10 +122,10 @@ public class IpPacket extends EthernetPacket implements IpProperties {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(super.toString());
         stringBuilder.append("-----------------------------------------------------------------------------\n");
         stringBuilder.append("                           I P     H E A D E R                             \n");
         stringBuilder.append("-----------------------------------------------------------------------------\n");
-        stringBuilder.append(HexUtil.toString(this.data)).append("\n");
         stringBuilder.append("Version & Header Length  : ").append(HexUtil.toString(getRawVersionAndHeaderLength())).append("\n");
         stringBuilder.append("Type Of Service          : ").append(HexUtil.toString(getRawTypeOfService())).append("\n");
         stringBuilder.append("Total Length             : ").append(HexUtil.toString(getRawTotalLenght())).append(" = ").append(getTotalLenght()).append("\n");

@@ -4,11 +4,11 @@ public class IpAddress {
     public static final int WIDTH = 4;
 
     public static String toString(byte[] address) {
-        String addressStr = "";
+        StringBuilder addressStr = new StringBuilder();
         for (int i = 0; i < 4; ++i)
         {
             int t = 0xFF & address[i];
-            addressStr += "." + t;
+            addressStr.append(".").append(t);
         }
         return addressStr.substring(1);
     }

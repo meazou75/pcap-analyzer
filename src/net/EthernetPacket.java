@@ -9,7 +9,7 @@ public class EthernetPacket extends Packet implements EthernetProperties {
     protected byte[] data;
 
     public EthernetPacket(byte[] data) {
-        this.data = data;
+        this.data = ArrayUtil.sliceBytes(data, 0, EthernetPacket.ETH_HEADER_LEN);
     }
 
     public byte[] getData() {
@@ -48,7 +48,7 @@ public class EthernetPacket extends Packet implements EthernetProperties {
         stringBuilder.append("-----------------------------------------------------------------------------\n");
         stringBuilder.append("Destination Mac Address     : ").append(getDestinationMacAddress()).append("\n");
         stringBuilder.append("Source Mac Address          : ").append(getSourceMacAddress()).append("\n");
-        stringBuilder.append("Ethernet Type               : ").append(HexUtil.toString(this.getRawEthernetType())).append(" - ").append(getEthernetType());
+        stringBuilder.append("Ethernet Type               : ").append(HexUtil.toString(this.getRawEthernetType())).append(" - ").append(getEthernetType()).append("\n");
         return stringBuilder.toString();
     }
 }

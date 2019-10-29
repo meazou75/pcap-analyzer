@@ -8,4 +8,8 @@ public class Packet {
     public Class getType() {
         return this.getClass();
     }
+
+    // To String
+
+
 }

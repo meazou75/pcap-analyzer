@@ -1,8 +1,6 @@
 package client;
 
-import net.GlobalHeader;
-import net.Packet;
-import net.PcapHeader;
+import net.*;
 import service.PacketFactory;
 import util.FileUtil;
 import util.HexUtil;
@@ -14,7 +12,7 @@ import java.util.stream.IntStream;
 
 public class Extractor {
     public static void main(String[] args) throws IOException {
-        byte[] buffer = FileUtil.extractDataFromFile("C:\\Users\\fdelville\\Desktop\\MSSIS-Projects\\pcap-analyzer\\ressources\\ICMP.pcap");
+        byte[] buffer = FileUtil.extractDataFromFile("C:\\Users\\fdelville\\Desktop\\MSSIS-Projects\\pcap-analyzer\\ressources\\test3.pcap");
 
         GlobalHeader globalHeader = new GlobalHeader(Arrays.copyOfRange(buffer, 0, GlobalHeader.GLB_SIZE));
 
@@ -44,8 +42,14 @@ public class Extractor {
         }
 
         for (Packet packet : packets) {
-            System.out.println(packet.toString());
-            System.out.println("-----------------------------------------------------------------------------");
+            /*if(packet instanceof IpPacket) {
+               System.out.println(((IpPacket)packet).getFlagsFormated());
+            }*/
+            if(packet == null) {
+                continue;
+            }
+           System.out.println(packet.toString());
+           System.out.println("-----------------------------------------------------------------------------");
         }
     }
 }
