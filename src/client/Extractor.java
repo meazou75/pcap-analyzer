@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
 
 public class Extractor {
     public static void main(String[] args) throws IOException {
-        byte[] buffer = FileUtil.extractDataFromFile("/home/user/Bureau/pcap-analyzer/ressources/ftp.pcap");
+        byte[] buffer = FileUtil.extractDataFromFile("/home/user/Bureau/pcap-analyzer/ressources/DNS_GOOGLE.pcap");
 
         GlobalHeader globalHeader = new GlobalHeader(Arrays.copyOfRange(buffer, 0, GlobalHeader.GLB_SIZE));
 
@@ -49,8 +49,11 @@ public class Extractor {
             if(packet == null) {
                 continue;
             }
-           System.out.println(packet.toString());
-           System.out.println("-----------------------------------------------------------------------------");
+            if(packet instanceof UdpPacket) {
+                System.out.println(packet.toString());
+                System.out.println("-----------------------------------------------------------------------------");
+            }
+
         }
     }
 }
