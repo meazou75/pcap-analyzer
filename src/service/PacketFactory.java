@@ -2,6 +2,7 @@ package service;
 
 import net.*;
 import util.ArrayUtil;
+import util.HexUtil;
 
 import java.util.Arrays;
 

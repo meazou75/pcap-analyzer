@@ -57,10 +57,10 @@ public class IcmpPacket extends IpPacket implements IcmpProperties {
         stringBuilder.append("-----------------------------------------------------------------------------\n");
         stringBuilder.append("                          I C M P     P A C K E T                            \n");
         stringBuilder.append("-----------------------------------------------------------------------------\n");
-        stringBuilder.append("Icmp Type               : ").append(HexUtil.toString(getRawIcmpType())).append(" = ").append(getIcmpTypeFormated()).append("\n");
-        stringBuilder.append("Icmp Code               : ").append(HexUtil.toString(getRawIcmpCode())).append(" = ").append(getIcmpCode()).append("\n");
-        stringBuilder.append("Icmp Checksum           : ").append(HexUtil.toString(getRawIcmpChecksum())).append("\n");
-        stringBuilder.append("Icmp Data               : ").append(HexUtil.toString(getRawIcmpPayload())).append("\n");
+        stringBuilder.append("Icmp Type                 : ").append(HexUtil.toString(getRawIcmpType())).append(" = ").append(getIcmpTypeFormated()).append("\n");
+        stringBuilder.append("Icmp Code                 : ").append(HexUtil.toString(getRawIcmpCode())).append(" = ").append(getIcmpCode()).append("\n");
+        stringBuilder.append("Icmp Checksum             : ").append(HexUtil.toString(getRawIcmpChecksum())).append("\n");
+        stringBuilder.append("Icmp Data                 : ").append(HexUtil.toString(getRawIcmpPayload())).append("\n");
         return stringBuilder.toString();
     }
 }

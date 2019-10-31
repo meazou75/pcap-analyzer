@@ -52,4 +52,15 @@ public class HexUtil {
         return Integer.parseInt(bytesToHex(bytes, endian),16);
     }
 
+    public static long bytesToLong(byte[] bytes, boolean endian) {
+        return Long.parseLong(bytesToHex(bytes, endian),16);
+    }
+
+    public static int byteToDec(byte data, int pos1, int pos2) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 7-pos1; i>7-pos2; i--) {
+            sb.append(data >>> i & 1);
+        }
+        return Integer.parseInt(sb.toString(), 2);
+    }
 }

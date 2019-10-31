@@ -12,7 +12,7 @@ import java.util.stream.IntStream;
 
 public class Extractor {
     public static void main(String[] args) throws IOException {
-        byte[] buffer = FileUtil.extractDataFromFile("C:\\Users\\fdelville\\Desktop\\MSSIS-Projects\\pcap-analyzer\\ressources\\test3.pcap");
+        byte[] buffer = FileUtil.extractDataFromFile("/home/user/Bureau/pcap-analyzer/ressources/ftp.pcap");
 
         GlobalHeader globalHeader = new GlobalHeader(Arrays.copyOfRange(buffer, 0, GlobalHeader.GLB_SIZE));
 
@@ -40,6 +40,7 @@ public class Extractor {
         for (byte[] raw_packet : raw_buffer_sequenced) {
             packets.add(PacketFactory.constructPacket(raw_packet));
         }
+
 
         for (Packet packet : packets) {
             /*if(packet instanceof IpPacket) {

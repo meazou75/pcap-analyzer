@@ -126,16 +126,16 @@ public class IpPacket extends EthernetPacket implements IpProperties {
         stringBuilder.append("-----------------------------------------------------------------------------\n");
         stringBuilder.append("                           I P     H E A D E R                             \n");
         stringBuilder.append("-----------------------------------------------------------------------------\n");
-        stringBuilder.append("Version & Header Length  : ").append(HexUtil.toString(getRawVersionAndHeaderLength())).append("\n");
-        stringBuilder.append("Type Of Service          : ").append(HexUtil.toString(getRawTypeOfService())).append("\n");
-        stringBuilder.append("Total Length             : ").append(HexUtil.toString(getRawTotalLenght())).append(" = ").append(getTotalLenght()).append("\n");
-        stringBuilder.append("Identification           : ").append(HexUtil.toString(getRawId())).append(" = ").append(getId()).append("\n");
-        stringBuilder.append("Flags :                  : ").append(HexUtil.toString(getRawFlags())).append(" = ").append(getFlagsFormated()).append("\n");
-        stringBuilder.append("Time to live             : ").append(HexUtil.toString(getRawTimeToLive())).append(" = ").append(getTimeToLive()).append("\n");
-        stringBuilder.append("Protocol                 : ").append(getProtocolFormated()).append("\n");
-        stringBuilder.append("Header Checksum          : ").append(HexUtil.toString(getRawHeaderChecksum())).append("\n");
-        stringBuilder.append("Source Address           : ").append(getSourceAddress()).append("\n");
-        stringBuilder.append("Destination Address      : ").append(getDestinationAddress()).append("\n");
+        stringBuilder.append("Version & Header Length   : ").append(HexUtil.toString(getRawVersionAndHeaderLength())).append("\n");
+        stringBuilder.append("Type Of Service           : ").append(HexUtil.toString(getRawTypeOfService())).append("\n");
+        stringBuilder.append("Total Length              : ").append(HexUtil.toString(getRawTotalLenght())).append(" = ").append(getTotalLenght()).append("\n");
+        stringBuilder.append("Identification            : ").append(HexUtil.toString(getRawId())).append(" = ").append(getId()).append("\n");
+        stringBuilder.append("Flags :                   : ").append(HexUtil.toString(getRawFlags())).append(" = ").append(getFlagsFormated()).append("\n");
+        stringBuilder.append("Time to live              : ").append(HexUtil.toString(getRawTimeToLive())).append(" = ").append(getTimeToLive()).append("\n");
+        stringBuilder.append("Protocol                  : ").append(getProtocolFormated()).append("\n");
+        stringBuilder.append("Header Checksum           : ").append(HexUtil.toString(getRawHeaderChecksum())).append("\n");
+        stringBuilder.append("Source Address            : ").append(getSourceAddress()).append("\n");
+        stringBuilder.append("Destination Address       : ").append(getDestinationAddress()).append("\n");
         return stringBuilder.toString();
     }
 }
