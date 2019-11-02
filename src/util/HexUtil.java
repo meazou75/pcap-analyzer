@@ -1,6 +1,8 @@
 package util;
 
 import java.io.StringWriter;
+import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.Arrays;
 
 public class HexUtil {
@@ -62,5 +64,9 @@ public class HexUtil {
             sb.append(data >>> i & 1);
         }
         return Integer.parseInt(sb.toString(), 2);
+    }
+
+    public static String bytesToString(byte[] bytes) {
+        return new String(bytes, StandardCharsets.UTF_8);
     }
 }

@@ -9,7 +9,11 @@ public class ArpPacket extends EthernetPacket implements ArpProperties{
 
     public ArpPacket(byte[] data) {
         super(data);
-        this.data = ArrayUtil.sliceBytes(data, EthernetPacket.ETH_HEADER_LEN, data.length);
+        this.data = ArrayUtil.sliceBytes(data, PcapHeader.PH_SIZE + EthernetPacket.ETH_HEADER_LEN, data.length);
+    }
+
+    public String getType() {
+        return "ARP";
     }
 
     public byte[] getData() {

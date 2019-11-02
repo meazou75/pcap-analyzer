@@ -9,7 +9,11 @@ public class TcpPacket extends IpPacket implements TcpProperties {
 
     public TcpPacket(byte[] data) {
         super(data);
-        this.data = ArrayUtil.sliceBytes(data, EthernetPacket.ETH_HEADER_LEN + IpProperties.IP_HEADER_LEN, data.length);
+        this.data = ArrayUtil.sliceBytes(data, PcapHeader.PH_SIZE + EthernetPacket.ETH_HEADER_LEN + IpProperties.IP_HEADER_LEN, data.length, true);
+    }
+
+    public String getType() {
+        return "TCP";
     }
 
     public byte[] getRawSourcePort() {
@@ -121,6 +125,14 @@ public class TcpPacket extends IpPacket implements TcpProperties {
         return ArrayUtil.sliceBytes(this.data, TcpPacket.TCP_HEADER_LEN, getHeaderLenght() - 20);
     }
 
+    public boolean hasPayload() {
+        return this.data.length - getHeaderLenght() != 0;
+    }
+
+    public byte[] getRawPayload() {
+        return ArrayUtil.sliceBytes(this.data, getHeaderLenght(), this.data.length, true);
+    }
+
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
@@ -137,7 +149,7 @@ public class TcpPacket extends IpPacket implements TcpProperties {
         stringBuilder.append("Window Size               : ").append(HexUtil.toString(getRawWindowSize())).append("\n");
         stringBuilder.append("Checksum                  : ").append(HexUtil.toString(getRawChecksum())).append("\n");
         stringBuilder.append("Urgent Pointer            : ").append(HexUtil.toString(getRawUrgentPointer())).append("\n");
-        stringBuilder.append("Option                    : ").append(hasOptions() ? HexUtil.toString(getRawOptions()) : "None");
+        stringBuilder.append("Option                    : ").append(hasOptions() ? HexUtil.toString(getRawOptions()) : "None").append("\n");
         return stringBuilder.toString();
     }
 }

@@ -11,24 +11,24 @@ public class PacketFactory {
         PcapHeader pcapHeader;
         EthernetPacket ethernetHeader;
 
-        pcapHeader = new PcapHeader(Arrays.copyOfRange(rawData, 0, PcapHeader.PH_SIZE));
+        pcapHeader = new PcapHeader(rawData);
 
-        byte[] rawPacket = ArrayUtil.sliceBytes(rawData, PcapHeader.PH_SIZE , rawData.length);
+       // byte[] rawPacket = ArrayUtil.sliceBytes(rawData, PcapHeader.PH_SIZE , rawData.length, true);
 
-        ethernetHeader = new EthernetPacket(rawPacket);
+        ethernetHeader = new EthernetPacket(rawData);
 
         switch (ethernetHeader.getEthernetType()) {
             case 0x0806:
-                return new ArpPacket(rawPacket);
+                return new ArpPacket(rawData);
             case 0x0800:
-                IpPacket ipHeader = new IpPacket(rawPacket);
+                IpPacket ipHeader = new IpPacket(rawData);
                 switch (ipHeader.getProtocol()) {
                     case 0x01 :
-                        return new IcmpPacket(rawPacket);
+                        return new IcmpPacket(rawData);
                     case 0x06 :
-                        return new TcpPacket(rawPacket);
+                        return new TcpPacket(rawData);
                     case 0x11:
-                        return new UdpPacket(rawPacket);
+                        return new UdpPacket(rawData);
                     default :
                         return null;
                 }

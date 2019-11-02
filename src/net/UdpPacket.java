@@ -8,7 +8,11 @@ public class UdpPacket extends IpPacket implements UdpProperties {
 
     public UdpPacket(byte[] data) {
         super(data);
-        this.data = ArrayUtil.sliceBytes(data, EthernetPacket.ETH_HEADER_LEN + IpProperties.IP_HEADER_LEN, data.length);
+        this.data = ArrayUtil.sliceBytes(data, PcapHeader.PH_SIZE + EthernetPacket.ETH_HEADER_LEN + IpProperties.IP_HEADER_LEN, data.length, true);
+    }
+
+    public String getType() {
+        return "UDP";
     }
 
     public byte[] getRawSourcePort() {
@@ -37,6 +41,14 @@ public class UdpPacket extends IpPacket implements UdpProperties {
 
     public byte[] getRawChecksum() {
         return ArrayUtil.sliceBytes(this.data, UdpPacket.UDP_CSUM_POS, UdpPacket.UDP_CSUM_LEN);
+    }
+
+    public boolean hasPayload() {
+        return this.data.length - UdpPacket.UDP_HEADER_LEN != 0;
+    }
+
+    public byte[] getRawPayload() {
+        return ArrayUtil.sliceBytes(this.data, UdpPacket.UDP_HEADER_LEN, this.data.length, true);
     }
 
     @Override

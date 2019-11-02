@@ -5,11 +5,16 @@ import util.HexUtil;
 
 import java.util.Arrays;
 
-public class EthernetPacket extends Packet implements EthernetProperties {
+public class EthernetPacket extends PcapHeader implements EthernetProperties {
     protected byte[] data;
 
     public EthernetPacket(byte[] data) {
-        this.data = ArrayUtil.sliceBytes(data, 0, EthernetPacket.ETH_HEADER_LEN);
+        super(data);
+        this.data = ArrayUtil.sliceBytes(data, PcapHeader.PH_SIZE, EthernetPacket.ETH_HEADER_LEN);
+    }
+
+    public String getType() {
+        return "ETHERNET";
     }
 
     public byte[] getData() {
@@ -43,6 +48,7 @@ public class EthernetPacket extends Packet implements EthernetProperties {
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(super.toString());
         stringBuilder.append("-----------------------------------------------------------------------------\n");
         stringBuilder.append("                        E T H E R N E T     H E A D E R                      \n");
         stringBuilder.append("-----------------------------------------------------------------------------\n");

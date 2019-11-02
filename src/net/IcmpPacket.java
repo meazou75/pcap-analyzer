@@ -7,9 +7,13 @@ public class IcmpPacket extends IpPacket implements IcmpProperties {
 
     protected byte[] data;
 
+    public String getType() {
+        return "ICMP";
+    }
+
     public IcmpPacket(byte[] data) {
         super(data);
-        this.data = ArrayUtil.sliceBytes(data, EthernetPacket.ETH_HEADER_LEN + IpProperties.IP_HEADER_LEN, data.length);
+        this.data = ArrayUtil.sliceBytes(data, PcapHeader.PH_SIZE + EthernetPacket.ETH_HEADER_LEN + IpProperties.IP_HEADER_LEN, data.length);
     }
 
     public byte[] getData() {
