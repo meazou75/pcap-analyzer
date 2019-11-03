@@ -137,9 +137,9 @@ public class TcpPacket extends IpPacket implements TcpProperties {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(super.toString());
-        stringBuilder.append("-----------------------------------------------------------------------------\n");
-        stringBuilder.append("                            T C P      P A C K E T                           \n");
-        stringBuilder.append("-----------------------------------------------------------------------------\n");
+        stringBuilder.append("-----------------------------------------------------------------------------------\n");
+        stringBuilder.append("------------------------T C P      P A C K E T                           \n");
+        stringBuilder.append("-----------------------------------------------------------------------------------\n");
         stringBuilder.append("Source port               : ").append(HexUtil.toString(getRawSourcePort())).append(" = ").append(getSourcePort()).append("\n");
         stringBuilder.append("Destination port          : ").append(HexUtil.toString(getRawDestinationPort())).append(" = ").append(getDestinationPort()).append("\n");
         stringBuilder.append("Sequence Number           : ").append(HexUtil.toString(getRawSequenceNumber())).append(" = ").append(getSequenceNumber()).append("\n");

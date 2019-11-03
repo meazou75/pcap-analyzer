@@ -47,9 +47,9 @@ public class DnsPacket extends UdpPacket implements DnsProperties {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(super.toString());
-        stringBuilder.append("-----------------------------------------------------------------------------\n");
-        stringBuilder.append("                              D N S      P A C K E T                         \n");
-        stringBuilder.append("-----------------------------------------------------------------------------\n");
+        stringBuilder.append("-----------------------------------------------------------------------------------\n");
+        stringBuilder.append("------------------------------D N S      P A C K E T                         \n");
+        stringBuilder.append("-----------------------------------------------------------------------------------\n");
         stringBuilder.append("Transaction ID            : ").append(HexUtil.toString(getRawTransactionId())).append("\n");
         stringBuilder.append("Flags                     : ").append(HexUtil.toString(getRawFlags())).append("\n");
         stringBuilder.append("Questions                 : ").append(HexUtil.toString(getRawDnsQuestions())).append("\n");

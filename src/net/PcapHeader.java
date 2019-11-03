@@ -45,9 +45,9 @@ public class PcapHeader extends Packet implements PcapHProperties{
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("-----------------------------------------------------------------------------\n");
-        stringBuilder.append("                             P C A P     H E A D E R                         \n");
-        stringBuilder.append("-----------------------------------------------------------------------------\n");
+        stringBuilder.append("-----------------------------------------------------------------------------------\n");
+        stringBuilder.append("------P C A P     H E A D E R                         \n");
+        stringBuilder.append("-----------------------------------------------------------------------------------\n");
         stringBuilder.append("Timestamp     : ").append(HexUtil.toString(getRawTimestamp())).append(" - ").append(this.getDateFromTimestamp()).append("\n");
         stringBuilder.append("Packet Lenght : ").append(HexUtil.toString(getRawPacketLenght())).append(" - ").append(this.getPacketLenght()).append("\n");
         return stringBuilder.toString();

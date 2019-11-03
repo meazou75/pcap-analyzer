@@ -120,9 +120,9 @@ public class DhcpPacket extends UdpPacket implements DhcpProperties {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(super.toString());
-        stringBuilder.append("-----------------------------------------------------------------------------\n");
-        stringBuilder.append("                            D H C P      P A C K E T                         \n");
-        stringBuilder.append("-----------------------------------------------------------------------------\n");
+        stringBuilder.append("-----------------------------------------------------------------------------------\n");
+        stringBuilder.append("------------------------------D H C P      P A C K E T                         \n");
+        stringBuilder.append("-----------------------------------------------------------------------------------\n");
         stringBuilder.append("Message Type              : ").append(getMessageTypeFormated()).append("\n");
         stringBuilder.append("Hardware Type             : ").append(HexUtil.toString(getRawHardwareType())).append("\n");
         stringBuilder.append("Hardware Address Length   : ").append(HexUtil.toString(getRawHardwareAddrLenght())).append("\n");

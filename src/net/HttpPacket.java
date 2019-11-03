@@ -19,9 +19,9 @@ public class HttpPacket extends TcpPacket {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(super.toString());
-        stringBuilder.append("-----------------------------------------------------------------------------\n");
-        stringBuilder.append("                            H T T P      P A C K E T                         \n");
-        stringBuilder.append("-----------------------------------------------------------------------------\n");
+        stringBuilder.append("-----------------------------------------------------------------------------------\n");
+        stringBuilder.append("------------------------------H T T P      P A C K E T                         \n");
+        stringBuilder.append("-----------------------------------------------------------------------------------\n");
         stringBuilder.append(HexUtil.bytesToString(this.data));
         return stringBuilder.toString();
     }

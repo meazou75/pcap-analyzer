@@ -68,9 +68,15 @@ public class IpPacket extends EthernetPacket implements IpProperties {
 
     public String getFlagsFormated() {
         StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append("Reserved Bit : ").append(getReservedFlag()).append(" / ");
-        stringBuilder.append("Don't Fragment Bit : ").append(getNoFragmentFlag()).append(" / ");
-        stringBuilder.append("More Fragments Bit : ").append(getMoreFragmentsFlag());
+        if(getReservedFlag()) {
+            stringBuilder.append("Reserved Bit").append(" / ");
+        }
+        if(getNoFragmentFlag()) {
+            stringBuilder.append("Don't Fragment Bit").append(" / ");
+        }
+        if(getMoreFragmentsFlag()) {
+            stringBuilder.append("More Fragments Bit").append(" / ");
+        }
         return stringBuilder.toString();
     }
 
@@ -127,15 +133,15 @@ public class IpPacket extends EthernetPacket implements IpProperties {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(super.toString());
-        stringBuilder.append("-----------------------------------------------------------------------------\n");
-        stringBuilder.append("                           I P     H E A D E R                             \n");
-        stringBuilder.append("-----------------------------------------------------------------------------\n");
+        stringBuilder.append("-----------------------------------------------------------------------------------\n");
+        stringBuilder.append("------------------I P     H E A D E R                             \n");
+        stringBuilder.append("-----------------------------------------------------------------------------------\n");
         stringBuilder.append("Lenght : ").append(this.data.length).append("\n");
         stringBuilder.append("Version & Header Length   : ").append(HexUtil.toString(getRawVersionAndHeaderLength())).append("\n");
         stringBuilder.append("Type Of Service           : ").append(HexUtil.toString(getRawTypeOfService())).append("\n");
         stringBuilder.append("Total Length              : ").append(HexUtil.toString(getRawTotalLenght())).append(" = ").append(getTotalLenght()).append("\n");
         stringBuilder.append("Identification            : ").append(HexUtil.toString(getRawId())).append(" = ").append(getId()).append("\n");
-        stringBuilder.append("Flags :                   : ").append(HexUtil.toString(getRawFlags())).append(" = ").append(getFlagsFormated()).append("\n");
+        stringBuilder.append("Flags :                   : ").append(getFlagsFormated()).append("\n");
         stringBuilder.append("Time to live              : ").append(HexUtil.toString(getRawTimeToLive())).append(" = ").append(getTimeToLive()).append("\n");
         stringBuilder.append("Protocol                  : ").append(getProtocolFormated()).append("\n");
         stringBuilder.append("Header Checksum           : ").append(HexUtil.toString(getRawHeaderChecksum())).append("\n");

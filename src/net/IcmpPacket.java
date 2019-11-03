@@ -58,9 +58,9 @@ public class IcmpPacket extends IpPacket implements IcmpProperties {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(super.toString());
-        stringBuilder.append("-----------------------------------------------------------------------------\n");
-        stringBuilder.append("                          I C M P     P A C K E T                            \n");
-        stringBuilder.append("-----------------------------------------------------------------------------\n");
+        stringBuilder.append("-----------------------------------------------------------------------------------\n");
+        stringBuilder.append("------------------------I C M P     P A C K E T                            \n");
+        stringBuilder.append("-----------------------------------------------------------------------------------\n");
         stringBuilder.append("Icmp Type                 : ").append(HexUtil.toString(getRawIcmpType())).append(" = ").append(getIcmpTypeFormated()).append("\n");
         stringBuilder.append("Icmp Code                 : ").append(HexUtil.toString(getRawIcmpCode())).append(" = ").append(getIcmpCode()).append("\n");
         stringBuilder.append("Icmp Checksum             : ").append(HexUtil.toString(getRawIcmpChecksum())).append("\n");

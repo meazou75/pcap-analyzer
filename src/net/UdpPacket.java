@@ -55,9 +55,9 @@ public class UdpPacket extends IpPacket implements UdpProperties {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(super.toString());
-        stringBuilder.append("-----------------------------------------------------------------------------\n");
-        stringBuilder.append("                            U D P      P A C K E T                           \n");
-        stringBuilder.append("-----------------------------------------------------------------------------\n");
+        stringBuilder.append("-----------------------------------------------------------------------------------\n");
+        stringBuilder.append("------------------------U D P      P A C K E T                           \n");
+        stringBuilder.append("-----------------------------------------------------------------------------------\n");
         stringBuilder.append("Source port               : ").append(HexUtil.toString(getRawSourcePort())).append(" = ").append(getSourcePort()).append("\n");
         stringBuilder.append("Destination port          : ").append(HexUtil.toString(getRawDestinationPort())).append(" = ").append(getDestinationPort()).append("\n");
         stringBuilder.append("Lenght                    : ").append(HexUtil.toString(getRawLenght())).append(" = ").append(getLenght()).append("\n");

@@ -49,9 +49,9 @@ public class EthernetPacket extends PcapHeader implements EthernetProperties {
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(super.toString());
-        stringBuilder.append("-----------------------------------------------------------------------------\n");
-        stringBuilder.append("                        E T H E R N E T     H E A D E R                      \n");
-        stringBuilder.append("-----------------------------------------------------------------------------\n");
+        stringBuilder.append("-----------------------------------------------------------------------------------\n");
+        stringBuilder.append("------------E T H E R N E T     H E A D E R                      \n");
+        stringBuilder.append("-----------------------------------------------------------------------------------\n");
         stringBuilder.append("Destination Mac Address   : ").append(getDestinationMacAddress()).append("\n");
         stringBuilder.append("Source Mac Address        : ").append(getSourceMacAddress()).append("\n");
         stringBuilder.append("Ethernet Type             : ").append(HexUtil.toString(this.getRawEthernetType())).append(" - ").append(getEthernetType()).append("\n");

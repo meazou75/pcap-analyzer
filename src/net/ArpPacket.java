@@ -120,9 +120,9 @@ public class ArpPacket extends EthernetPacket implements ArpProperties{
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
         stringBuilder.append(super.toString());
-        stringBuilder.append("-----------------------------------------------------------------------------\n");
-        stringBuilder.append("                             A R P     P A C K E T                           \n");
-        stringBuilder.append("-----------------------------------------------------------------------------\n");
+        stringBuilder.append("-----------------------------------------------------------------------------------\n");
+        stringBuilder.append("------------------A R P     P A C K E T                           \n");
+        stringBuilder.append("-----------------------------------------------------------------------------------\n");
         stringBuilder.append("Hardware Type               : ").append(HexUtil.toString(getRawHardwareType())).append(" = ").append(getHardwareTypeName()).append("\n");
         stringBuilder.append("Protocol Type               : ").append(HexUtil.toString(getRawProtocolType())).append(" = ").append(getProtocolTypeName()).append("\n");
         stringBuilder.append("Hardware      Size          : ").append(HexUtil.toString(getRawHardwareSize())).append(" = ").append(getHardwareSize()).append("\n");

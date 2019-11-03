@@ -13,7 +13,9 @@ import java.util.stream.IntStream;
 public class Extractor {
     public static void main(String[] args) throws IOException {
 
-        List validTypes = Arrays.asList("ETHERNET", "IPV4", "UDP", "TCP", "DHCP", "HTTP", "DNS", "FTP", "ARP");
+        String typeFilter = "";
+
+        List validTypes = Arrays.asList("IPV4", "UDP", "TCP", "DHCP", "HTTP", "DNS", "FTP", "ARP", "ICMP");
 
         if(args.length == 0) {
             System.out.println("No options specify please use -help ");
@@ -24,7 +26,7 @@ public class Extractor {
             System.out.println("Project by Delville Francois");
             System.out.println("Usage : java -jar pcap-analyzer <fname> => Print all packets from the pcapfile");
             System.out.println("Usage : java -jar pcap-analyzer <fname> TCP => Print all TCP packets from the pcapfile");
-            System.out.println("Available packet type : ETHERNET / ARP / IPV4 / UPD / TCP / DHCP / HTTP / DNS / FTP");
+            System.out.println("Available packet type :  ARP / IPV4 / UPD / TCP / DHCP / HTTP / DNS / FTP / ICMP");
             return;
         }
 
@@ -33,6 +35,7 @@ public class Extractor {
                 System.out.println("Type provided is not valid ! ");
                 return;
             }
+            typeFilter = args[1];
         }
 
         byte[] buffer = FileUtil.extractDataFromFile(args[0]);
@@ -224,9 +227,18 @@ public class Extractor {
             return -1;
         });
 
-        for (Packet packet : packets) {
-           System.out.println(packet.toString());
-           System.out.println("-----------------------------------------------------------------------------");
+        // Filter if typeFilter
+
+        if(!typeFilter.equals("")) {
+            packets = Filter.filter_packets(packets, typeFilter);
         }
+
+        if(packets.size() > 0) {
+            Viewer.view_packets(packets);
+        } else {
+            System.out.println("No packets to display");
+        }
+
+
     }
 }
